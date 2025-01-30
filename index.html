@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pornhub Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .video-player {
+            max-width: 100%;
+            margin: 20px auto;
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .ads {
+            margin: 20px 0;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pornhub Video Player</h1>
+        <p>Enjoy premium content!</p>
+
+        <!-- Video Player -->
+        <div class="video-player">
+            <iframe id="pornhub-video" src="" allowfullscreen></iframe>
+        </div>
+
+        <style type="text/css">
+  .mobileShow {display: none;}
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){ 
+      .mobileShow {display: inline;}
+  }
+  .mobileHide { display: inline; }
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){
+     .mobileHide { display: none;}
+  }
+</style>
+
+     <div class="mobileShow">
+<center><script type="text/javascript">
+	atOptions = {
+		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
+<div class="mobileHide"><center><script type="text/javascript">
+	atOptions = {
+		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
+
+<script type='text/javascript' src='//identicalprofile.com/26/0e/a6/260ea6a6ea8b17c3cc8804c83f0fdc37.js'></script>
+
+        <!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4922497,4,0,0,0,00000000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4922497&101" alt="" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+        </div>
+    </div>
+
+    <script>
+        const apiKey = "apify_api_e55hslUhm1mNjaLjOQiJg3xwMsRuQh2lFSjL"; // Replace with your Pornhub API Key
+        const videoId = "AP3hkj1D4QlII06A9"; // Replace with a valid video ID
+
+        const fetchVideoUrl = async () => {
+            try {
+                const response = await fetch(`https://www.pornhub.com/api/play?key=${apiKey}&id=${videoId}`);
+                const data = await response.json();
+
+                if (data && data.url) {
+                    document.getElementById('pornhub-video').src = data.url;
+                } else {
+                    console.error('Failed to fetch video URL:', data);
+                }
+            } catch (error) {
+                console.error('Error fetching video URL:', error);
+            }
+        };
+
+        // Fetch video URL on page load
+        fetchVideoUrl();
+    </script>
+</body>
+</html>
