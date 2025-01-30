@@ -3,17 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adult Video Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pornhub Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .video-player {
+            max-width: 100%;
+            margin: 20px auto;
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .ads {
+            margin: 20px 0;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 500px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Adult Video Hub</h1>
-    </header>
+    <div class="container">
+        <h1>Pornhub Video Player</h1>
+        <p>Enjoy premium content!</p>
 
-    <!-- Tempat Iklan Adsterra -->
-    <div class="adsterra">
-        <script async="async" data-cfasync="false" 
+        <!-- Video Player -->
+        <div class="video-player">
+            <iframe id="pornhub-video" src="" allowfullscreen></iframe>
+        </div>
+
+        <!-- Adsterra Ad Placeholder -->
+        <div class="ads" id="adsterra">
+            <h2>Your Adsterra Ad Here</h2>
+            <p>(Paste your Adsterra ad script below)</p>
             <style type="text/css">
   .mobileShow {display: none;}
 
@@ -56,15 +93,38 @@
 <script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
 
 <script type='text/javascript' src='//identicalprofile.com/26/0e/a6/260ea6a6ea8b17c3cc8804c83f0fdc37.js'></script>
+        </div>
+
+        <!-- Histat Counter Placeholder -->
+        <div class="ads" id="histat">
+            <h2>Visitor Counter</h2>
+            <p>(Paste your Histat counter script below)</p>
+            <!-- Example Histat Script -->
+            <!-- Replace this comment with your Histat counter script -->
+        </div>
     </div>
 
-    <main>
-        <div id="video-container">
-            <h2>Trending Ebony Videos</h2>
-            <div id="videos"></div>
-        </div>
-    </main>
+    <script>
+        const apiKey = "apify_api_iqBm9zjmIGR8zAy9iyeEzxVQh4Nqzw3Nfymg"; // Replace with your Pornhub API Key
+        const videoId = "SAMPLE_VIDEO_ID"; // Replace with a valid video ID
 
-    <script src="script.js"></script>
+        const fetchVideoUrl = async () => {
+            try {
+                const response = await fetch(`https://www.pornhub.com/api/play?key=${apiKey}&id=${videoId}`);
+                const data = await response.json();
+
+                if (data && data.url) {
+                    document.getElementById('pornhub-video').src = data.url;
+                } else {
+                    console.error('Failed to fetch video URL:', data);
+                }
+            } catch (error) {
+                console.error('Error fetching video URL:', error);
+            }
+        };
+
+        // Fetch video URL on page load
+        fetchVideoUrl();
+    </script>
 </body>
 </html>
